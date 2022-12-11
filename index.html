@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time measure</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <main class="time-measure">
+        <div class="container">
+            <div class="wrapper">
+                <div class="main-content">
+                    <h1 class="main-title">Let’s count time!</h1>
+                    <div class="options">
+                        <h2 class="label">options</h2>
+                        <ul class="options-list">
+                            <li class="option-item"><button class="filter-btn days-type focused">All days</button></li>
+                            <li class="option-item"><button class="filter-btn days-type">Weekdays</button></li>
+                            <li class="option-item"><button class="filter-btn days-type">Weekend</button></li>
+                        </ul>
+                        <ul class="options-list" id="measure">
+                            <li class="option-item"><button class="filter-btn measure focused">Days</button></li>
+                            <li class="option-item"><button class="filter-btn measure">Hours</button></li>
+                            <li class="option-item"><button class="filter-btn measure">Minutes</button></li>
+                            <li class="option-item"><button class="filter-btn measure">Seconds</button></li>
+                        </ul>
+                    </div>
+                    <div class="date-range">
+                        <h2 class="label">select a date range</h2>
+                        <input type="date" id="start" name="trip-start" value="2022-11-17" min="1995-01-01"
+                            max="2025-12-31">
+                        <input type="date" id="end" name="trip-start" value="2022-11-18" min="1995-01-01"
+                            max="2025-12-31">
+                    </div>
+                    <div class="options">
+                        <h2 class="label">presets</h2>
+                        <ul class="options-list">
+                            <li class="option-item"><button class="filter-btn preset">Week</button></li>
+                            <li class="option-item"><button class="filter-btn preset">Month</button></li>
+                        </ul>
+                    </div>
+                    <div class="result-wrapper">
+                        <button class="btn">Count</button>
+                        <input disabled class="input-result" type="text" value="">
+                    </div>
+                </div>
+                <div class="history-wrapper">
+                    <div class="history">
+                        <h2 class="label">history</h2>
+                        <table class="history-data">
+                            <thead>
+                                <tr>
+                                    <th class="history-data-header">date range</th>
+                                    <th class="history-data-header">result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
