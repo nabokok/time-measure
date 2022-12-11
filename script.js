@@ -145,8 +145,14 @@ function storeInLocalStorage(startDateValue, endDateValue, result) {
 
 function storeInHistory() {
     const results = JSON.parse(localStorage.getItem('results'));
-    const table = document.querySelector('.history-data tbody')
-    table.innerHTML = null;
+    const table = document.querySelector('.history-data');
+    if (!results) {
+        table.style.display = 'none';
+        return;
+    } 
+    const tableBody = table.querySelector('tbody')
+    table.style.display = 'table';
+    tableBody.innerHTML = null;
     results.forEach(resultItem => {
         const tableRow = document.createElement('tr');
         const tableCol1 = document.createElement('td');
@@ -155,7 +161,7 @@ function storeInHistory() {
         tableCol2.className = 'history-data-row history-data-duration';
         tableRow.appendChild(tableCol1);
         tableRow.appendChild(tableCol2);
-        table.appendChild(tableRow);
+        tableBody.appendChild(tableRow);
         tableCol1.innerHTML = resultItem.range;
         tableCol2.innerHTML = resultItem.result;
     })
