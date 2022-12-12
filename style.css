@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-input[type=text], input[type=date] {
+input {
     -webkit-appearance: none;
     -webkit-border-radius: 0;
     }
