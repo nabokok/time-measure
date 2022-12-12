@@ -6,10 +6,12 @@
     box-sizing: border-box;
 }
 
-input {
+input,  input:disabled{
     -webkit-appearance: none;
     -webkit-border-radius: 0;
-    }
+    -webkit-text-fill-color: #000000;
+    opacity: 1;
+}
 
 ::selection {
     background-color: pink;
