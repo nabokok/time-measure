@@ -144,6 +144,15 @@ ul {
 .options,
 .date-range {
     margin-bottom: 40px;
+    position: relative;
+}
+
+.error {
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    left: 10px;
+    bottom: -30px;
 }
 
 input[type="date"] {
@@ -161,7 +170,7 @@ input[type="date"] {
 }
 
 input[type="date"]:focus-visible {
-    border-color: pink;
+    border-color: black;
 }
 
 .history-data {
@@ -270,7 +279,7 @@ input[type="date"]:focus-visible {
     }
 
     .date-range {
-        margin-bottom: 25px;
+        margin-bottom: 40px;
     }
 
     input[type="date"] {
@@ -294,7 +303,7 @@ input[type="date"]:focus-visible {
     }
 
     .btn {
-        margin: 0 0 20px;
+        margin: 0;
         font-size: 22px;
         line-height: 26px;
         padding: 18px 74px;

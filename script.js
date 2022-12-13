@@ -2,6 +2,7 @@ let daysType = document.querySelector('.days-type.focused').innerHTML;
 let measureType = document.querySelector('.measure.focused').innerHTML;
 let presetType = document.querySelector('.preset.focused')?.innerHTML;
 let result = document.querySelector('.input-result');
+let isValidated = true;
 const dateInputs = document.querySelectorAll('[type=date]')
 const startDate = document.getElementById('start');
 const endDate = document.getElementById('end');
@@ -9,10 +10,9 @@ const filterDaysBtns = document.querySelectorAll('.days-type');
 const filterMeasuresBtns = document.querySelectorAll('.measure');
 const presetBtns = document.querySelectorAll('.preset');
 const countBtn = document.querySelector('.btn');
+const error = document.querySelector('.error');
 
 document.addEventListener('DOMContentLoaded', () => {
-    startDate.value = new Date().toISOString().split('T')[0];
-    endDate.value = new Date().toISOString().split('T')[0];
     storeInHistory();
 });
 
@@ -30,6 +30,9 @@ presetBtns.forEach(btn => {
 
 dateInputs.forEach(input => {
     input.addEventListener('change', () => {
+        endDate.setAttribute('min', new Date(startDate.value).toISOString().split('T')[0]);
+        error.innerHTML = '';
+        document.getElementById("end").disabled = false;
         classRemover(presetBtns, 'focused');
     });
 });
@@ -103,21 +106,27 @@ function createDateList(startDateValue, endDateValue) {
 
 function setPreset() {
     const day = 60 * 60 * 24 * 1000;
-    const startDateValue = new Date(startDate.value);
-    const week = new Date(startDateValue.getTime() + day * 7)
-    const month = new Date(startDateValue.getTime() + day * 30)
-
+    const startDateValue = startDate.value ? new Date(startDate.value) : new Date();
+    const week = new Date(startDateValue.getTime() + day * 7);
+    const month = new Date(startDateValue.getTime() + day * 30);
+    error.innerHTML = '';
     switch (presetType) {
         case 'Week':
+            startDate.value = startDateValue.toISOString().split('T')[0];
             endDate.value = week.toISOString().split('T')[0];
             break;
         case 'Month':
+            startDate.value = startDateValue.toISOString().split('T')[0];
             endDate.value = month.toISOString().split('T')[0];
             break;
     }
 }
 
 function count() {
+    dateValidation();
+    if (!isValidated) {
+        return;
+    }
     const startDateValue = new Date(startDate.value);
     const endDateValue = new Date(endDate.value);
     const countDay = filterType(startDateValue, endDateValue, daysType);
@@ -139,6 +148,15 @@ function count() {
     storeInHistory();
 }
 
+function dateValidation() {
+    if (!startDate.value || !endDate.value) {
+        error.innerHTML = `Dude, I don't see a date range!`;
+        isValidated = false;
+        return;
+    }
+    isValidated = true;
+}
+
 function storeInLocalStorage(startDateValue, endDateValue, result) {
     const formattedStartDate = startDateValue.toISOString().split('T')[0];
     const formattedEndDate = endDateValue.toISOString().split('T')[0];
@@ -156,7 +174,7 @@ function storeInHistory() {
     if (!results) {
         table.style.display = 'none';
         return;
-    } 
+    }
     const tableBody = table.querySelector('tbody')
     table.style.display = 'table';
     tableBody.innerHTML = null;
