@@ -2,6 +2,7 @@ let daysType = document.querySelector('.days-type.focused').innerHTML;
 let measureType = document.querySelector('.measure.focused').innerHTML;
 let presetType = document.querySelector('.preset.focused')?.innerHTML;
 let result = document.querySelector('.input-result');
+const dateInputs = document.querySelectorAll('[type=date]')
 const startDate = document.getElementById('start');
 const endDate = document.getElementById('end');
 const filterDaysBtns = document.querySelectorAll('.days-type');
@@ -25,6 +26,12 @@ filterMeasuresBtns.forEach(btn => {
 
 presetBtns.forEach(btn => {
     clickBtnHandler(btn, presetBtns, 'presetType');
+});
+
+dateInputs.forEach(input => {
+    input.addEventListener('change', () => {
+        classRemover(presetBtns, 'focused');
+    });
 });
 
 countBtn.addEventListener('click', count);
@@ -87,7 +94,7 @@ function createDateList(startDateValue, endDateValue) {
     let currentDate = startDateValue;
     const dateList = [];
     const day = 60 * 60 * 24 * 1000;
-    while (currentDate.getTime() <= endDateValue.getTime()) {
+    while (currentDate.getTime() < endDateValue.getTime()) {
         dateList.push(currentDate);
         currentDate = new Date(currentDate.getTime() + day);
     };
