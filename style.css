@@ -159,7 +159,7 @@ input[type="date"] {
     background: #FFFFFF;
     border-radius: 95px;
     border: 2px solid #FFFFFF;
-    padding: 10px 30px;
+    padding: 10px 20px;
     font-family: 'Montserrat';
     font-weight: 600;
     font-size: 16px;
@@ -167,6 +167,7 @@ input[type="date"] {
     margin-right: 30px;
     outline: 0;
     cursor: pointer;
+    min-width: 190px;
 }
 
 input[type="date"]:focus-visible {
@@ -234,6 +235,7 @@ input[type="date"]:focus-visible {
     .result-wrapper {
         margin-bottom: 40px;
     }
+
 }
 
 
@@ -292,6 +294,11 @@ input[type="date"]:focus-visible {
         margin-bottom: 15px;
     }
 
+    input[type="date"] {
+        min-width: 255px;
+        min-height: 50px;
+    }
+
     .presets {
         flex-direction: row;
     }
@@ -304,8 +311,8 @@ input[type="date"]:focus-visible {
 
     .btn {
         margin: 0;
-        font-size: 22px;
-        line-height: 26px;
+        font-size: 20px;
+        line-height: 24px;
         padding: 18px 74px;
     }
 

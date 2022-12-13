@@ -30,11 +30,18 @@ presetBtns.forEach(btn => {
 
 dateInputs.forEach(input => {
     input.addEventListener('change', () => {
-        endDate.setAttribute('min', new Date(startDate.value).toISOString().split('T')[0]);
         error.innerHTML = '';
-        document.getElementById("end").disabled = false;
         classRemover(presetBtns, 'focused');
     });
+});
+
+startDate.addEventListener('change', () => {
+    endDate.setAttribute('min', new Date(startDate.value).toISOString().split('T')[0]);
+    document.getElementById("end").disabled = false;
+});
+
+endDate.addEventListener('change', () => {
+    startDate.setAttribute('max', new Date(endDate.value).toISOString().split('T')[0]);
 });
 
 countBtn.addEventListener('click', count);
