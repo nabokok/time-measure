@@ -174,7 +174,7 @@ function count() {
     storeInHistory();
 }
 
-//функція для перевірки startDate і endDate інпутів після натискання на кнопку Count
+//функція для перевірки startDate і endDate інпутів після натискання на кнопку count
 function dateValidation() {
     if (!startDate.value || !endDate.value) {
         error.innerHTML = `Dude, I don't see a date range!`;
