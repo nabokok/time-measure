@@ -1,11 +1,10 @@
-# TIME MEASURE
+# Time Measure
 
 This project is a simple time calculation tool designed to help users calculate durations within a selected timeframe.
 
-## DEMO 
+## Demo
 https://nabokok.github.io/time-measure/
 
 ## Technologies
-- JS
+- JavaScript
 - HTML, CSS
-- BEM Methodology
